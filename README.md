@@ -6,8 +6,11 @@
 
 **This bonziworld respository houses the source code to BonziWORLD: Enhanced.**
 <br>
-The source code has been made public because I would like to move on from this project and work on something else. Since it's just been sitting here collecting dust, I figured I should make this public. Who knows, maybe somebody will find this useful.
-<br><br>
+> The source code has been made public because I would like to move on from this project and work on something else. Who knows, maybe somebody will find this useful.
+<br>
+<b>This project has been discontinued. With the final release of BWE (v1.04) marking my full departure from the BonziWORLD community.</b>
+<br>
+
 ## What is this?
 BonziWORLD Enhanced is a fork of vanilla BonziWORLD which provides simple qol improvements and bug fixes to the original.
 <br><br>
