@@ -9,8 +9,8 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
-| bwe > 1.02   | :white_check_mark: |
-| bwe < 1.02   | ☑️ |
+| bwe > 1.02   | :x: |
+| bwe < 1.02   | :x: |
 | old licensed builds of bwe   | :x:                |
 | bwr   | :x:                |
 | bwce   | :x:                |
