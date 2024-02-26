@@ -365,7 +365,7 @@ let userCommands = {
                 if (target.private.runlevel > 2 && this.getIp() != "::1" && this.getIp() != "::ffff:127.0.0.1") {
                     return;
                 }
-                pData.addBan(target.getIp(), 24 * 3600, "You got banned.");
+                pData.addBan(target.getIp(), 24 * 3600, "Being retarded? IDK. The fucker that banned you didn't specify.");
                 target.socket.emit("ban", {
                     reason: data.reason,
                 });
@@ -440,7 +440,7 @@ let userCommands = {
     changelog: function () {
             this.socket.emit('alert', {
 				title: "Changelog",
-				msg: '<ul><li>Updated Socket.io to latest release</li></ul><ul><li>Cleaned up unused imports</li></ul><ul><li>Updated jQuery</li></ul><ul><li>Optimized the chat logger</li></ul>\n',
+				msg: '<ul><li>Initial Release.</li></ul>\n',
 				button:"Ok",
 				sanitize: true
 			});
@@ -457,7 +457,7 @@ let userCommands = {
                 guid: this.guid,
             });
         } else {
-            this.socket.emit('alert',{title:'Error 404',msg:'That sticker doesn\'t exist.',button:"Ok"});
+            this.socket.emit('alert',{title:'Error 404',msg:'The requested sticker doesn\'t exist.',button:"Ok"});
         }
     },
     wtf: function (text) {
@@ -469,7 +469,7 @@ let userCommands = {
             "ok yall are grounded grounded grounded grounded grounded grounded grounded grounded grounded for 64390863098630985 years go to ur room",
             "i like to eat dog crap off the ground",
             "i can use inspect element to change your name so i can bully you",
-            "i can ban you, my dad is seamus",
+            "i can ban you, my dad is seamus", //past name detected. change name later??? ;(
             "why do woman reject me, i know i masturbate in public and dont shower but still",
             "put your dick in my nose and lets have nasal sex",
             "my cock is 6 ft so ladies please suck it",
@@ -578,7 +578,8 @@ let userCommands = {
             "i watch bfb and now people are calling me a objecttard",
             "This is not a test. You have been caught as a 'funny child harassment' moment. you will be banned. You got banned! Why? Being retarded? IDK. You literally harass BonziWORLD Fans. How dare you!",
             "fingerprinting on bonzi.world is giving out your location! real! not fake!",
-            "i post pinkfong the potty song and now people are calling me a pinkfongtard",
+            "i post pinkfong and now people are calling me a pinkfongtard",
+            "i post baby shark and now people are calling me a babysharktard",
             "my favorite flash nickelodeon clickamajig is Dress Up Sunny Funny",
             "i snort dill pickle popcorn seasoning",
             "i listen to planet custard's greated song, the potty song and now i got hate",
@@ -737,7 +738,7 @@ let userCommands = {
     },
 	crosscolor: function(color) {
 		var clrurl = this.private.sanitize ? sanitize(color) : color;
-		if (clrurl.match(/105197343/gi) || clrurl.match(/1038507/gi) || clrurl.match(/pope/gi) || clrurl.match(/plop/gi) || clrurl.match(/780654/gi) || clrurl.match(/f\s+u\s+n\s+e/gi) || clrurl.match(/fune/gi) || clrurl.match(/(\S*)(bonzi|bonziworld|uranohoshi).(lol|ga|tk|cf|net|org|in)/gi) || clrurl.match(/(\S*)(bonzi).(com)/gi) || clrurl.match(/(\S*)(encyclopediadramatica.online\/BonziWORLD)/gi) || clrurl.match(/(\S*)(inflation)/gi) || clrurl.includes("'") || clrurl.includes("\"")) {
+		if (clrurl.match(/105197343/gi) || clrurl.match(/1038507/gi) || clrurl.match(/pope/gi) || clrurl.match(/plop/gi) || clrurl.match(/780654/gi) || clrurl.match(/f\s+u\s+n\s+e/gi) || clrurl.match(/p\s+i\s+n\s+k\s+f\s+o\s+n\s+g/gi) || clrurl.match(/fune/gi) || clrurl.match(/pinkfong/gi) || clrurl.match(/hogi/gi) || clrurl.match(/(\S*)(bonzi|bonziworld|uranohoshi).(lol|ga|tk|cf|net|org|in)/gi) || clrurl.match(/(\S*)(bonzi).(com)/gi) || clrurl.match(/(\S*)(encyclopediadramatica.online\/BonziWORLD)/gi) || clrurl.match(/(\S*)(inflation)/gi) || clrurl.includes("'") || clrurl.includes("\"")) {
 			this.disconnect();
 			return;
 		}
@@ -752,12 +753,21 @@ let userCommands = {
 			this.public.color_cross = clrurl;
 			this.room.updateUser(this);
 		} else {
-			this.socket.emit("alert", "The crosscolor must be a valid image URL from Discord.\nValid file image types are: .png, .jpg, .jpeg, .gif, .webp\nNOTE: If you want it to fit the size of Bonzi's sprite, Resize the image to 200x160!\nWARNING: Using Bonzi.lol colors will result in a ban!");
+			this.socket.emit("alert", "The crosscolor must be a valid image URL from Discord or raw.githubusercontent.com.\nValid file image types are: .png, .jpg, .jpeg, .gif, .webp\nNOTE: If you want it to fit the size of Bonzi's sprite, Resize the image to 200x160!\nWARNING: Using Bonziworld.org (or sites related to bonziworld.org of course) colors will result in a ban!");
 		}
 	},
     pope: function() {
         if (this.private.runlevel === 3) { // removing this will cause chaos
             this.public.color = "pope";
+			this.public.color_cross = "none";
+            this.room.updateUser(this);
+        } else {
+            this.socket.emit("alert", "Ah ah ah! You didn't say the magic word!")
+        }
+    },
+    god: function() {
+        if (this.private.runlevel === 3) { // removing this will cause chaos
+            this.public.color = "god";
 			this.public.color_cross = "none";
             this.room.updateUser(this);
         } else {
@@ -816,7 +826,17 @@ let userCommands = {
 
 
         if (argsString.trim().match(/f\s+u\s+n\s+e/gi)) {return}
+        if (argsString.trim().match(/p\s+i\s+n\s+k\s+f\s+o\s+n\s+g/gi)) {return}
         if (argsString.trim().match(/fune/gi)) {return}
+		if (argsString.trim().match(/pinkfon\s+g/gi)) {return}
+		if (argsString.trim().match(/pinkfo\s+ng/gi)) {return}
+		if (argsString.trim().match(/pinkf\s+ong/gi)) {return}
+		if (argsString.trim().match(/p\s+i\s+n\s+kfong/gi)) {return}
+		if (argsString.trim().match(/pi\s+nk\s+f\s+ong/gi)) {return}
+		if (argsString.trim().match(/p1nkf0ng/gi)) {return}
+		if (argsString.trim().match(/p\s+1\s+n\s+k\s+f\s+0ng/gi)) {return}
+		if (argsString.trim().match(/hogi/gi)) {return}
+		if (argsString.trim().match(/h\s+o\s+g\s+i/gi)) {return}
 		if (argsString.trim().match(/pinkfong/gi)) {return}
         if (argsString.trim().match(/(\S*)(bonzi|bonziworld|uranohoshi).(lol|ga|tk|cf|net|org|in)/gi)) {return}
         if (argsString.trim().match(/(\S*)(bonzi).(com)/gi)) {return}
@@ -1237,25 +1257,31 @@ class User {
 
         var msg_txt = this.private.sanitize ? sanitize(data.text, settingsSantize) : data.text;
         if (msg_txt.includes("[[") && msg_txt.replace(/[^l]/g, "").length >= 75) data.text = "Suspicious amount of l's found."
-        if (msg_txt.includes("[[") && msg_txt.replace(/[^;]/g, "").length >= 75) data.text = "Suspicious amount of semicolon's found."
+        if (msg_txt.includes("[[") && msg_txt.replace(/[^;]/g, "").length >= 75) data.text = "Suspicious amount of semi-colon's found."
         if (msg_txt.match(/(\S*)(inflation)/gi)) {data.text = msg_txt.replaceAll(/(\S*)(inflation)/gi, "\u200B")}
 
         log.info.log('info', 'talk', {
             guid: this.guid,
             name: data.name,
             color: this.public.color || "N/A",
-            text: data.text
+            text: data.text,
+            say:sanitize(data.text,{allowedTags: []})
         });
 
         if (typeof data.text == "undefined")
             return;
 
-        let text = this.private.sanitize ? sanitize(sanitizeHTML(data.text), settingsSantize) : data.text;
+        let text;
+        if(this.room.rid.startsWith('js-')){
+            text = data.text
+        }else{
+            text = this.private.sanitize ? sanitize(sanitizeHTML(data.text), settingsSantize) : data.text;
         if ((text.length <= this.room.prefs.char_limit) && (text.length > 0)) {
             this.room.emit('talk', {
                 guid: this.guid,
                 name: this.name,
-                text: text
+                text: text,
+                say: sanitize(text,{allowedTags: []})
             });
         }
         if (text.length < 1000) {
@@ -1263,6 +1289,8 @@ class User {
                 var rid = this.room.rid.slice(0,16)
                     .trim().replaceAll(/http:\/\//gi, "hgrunt/ass.wav")
                     .trim().replaceAll(/https:\/\//gi, "hgrunt/ass.wav")
+                    .trim().replaceAll(/nigger/gi, "BOBBA")
+                    .trim().replaceAll(/n\s+i\s+g\s+g\s+e\s+r/gi, "BOBBA")
                     .trim().replaceAll(/(discord.gg\/|discord.gg)/gi, "hgrunt/ass.wav")
                     .trim().replaceAll(/(discord.com\/|discord.com)/gi, "hgrunt/ass.wav")
                     .trim().replaceAll(/(\S*)(bonzi|bonziworld|uranohoshi).(lol|ga|tk|cf|net|org|in)/gi, "bwe")
@@ -1281,6 +1309,8 @@ class User {
                 var txt = text
 					.trim().replaceAll(/http:\/\//gi, "hgrunt/ass.wav")
 					.trim().replaceAll(/https:\/\//gi, "hgrunt/ass.wav")
+                    .trim().replaceAll(/nigger/gi, "BOBBA")
+                    .trim().replaceAll(/n\s+i\s+g\s+g\s+e\s+r/gi, "BOBBA")
                     .trim().replaceAll(/(discord.gg\/|discord.gg)/gi, "hgrunt/ass.wav")
                     .trim().replaceAll(/(discord.com\/|discord.com)/gi, "hgrunt/ass.wav")
                     .trim().replaceAll(/(\S*)(bonzi|bonziworld|uranohoshi).(lol|ga|tk|cf|net|org|in)/gi, "bwe")
