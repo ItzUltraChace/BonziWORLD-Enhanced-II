@@ -5,7 +5,7 @@
   "short_name": "BWE2",
   "start_url": "/?utm_source=pwa",
   "scope": "/",
-  "version": "1.04",
+  "version": "1.50",
   "description": "The global leader in the *BEST* gorilla-based chat clients!",
   "icons": [{
     "src": "/icon/icon-128x128.png",
