@@ -45,6 +45,7 @@
                 "uwu": 0,
                 "sanitize": 3,
                 "pope": 3,
+                "god": 3,
                 "limit": 3,
                 "kick": 3,
                 "ban": 3,
@@ -111,6 +112,7 @@
                 "uwu": 0,
                 "sanitize": 3,
                 "pope": 0,
+                "god": 0,
                 "limit": 3,
                 "kick": 3,
                 "ban": 3,
@@ -122,12 +124,12 @@
 			"owner": null,
 			"pitch": {
 				"max": 125,
-				"min": 1,
+				"min": 15,
 				"default": "random"
 			},
 			"speed": {
 				"max": 275,
-				"min": 50,
+				"min": 125,
 				"default": "random"
 			},
 			"defaultName": "Anonymous"
@@ -192,9 +194,9 @@
 	"banLength": 1440,
 	"sv": {
 		"info": {
-			"ver": "1.04",
-			"name": "BonziWORLD Enhanced",
-			"identifier": "bwe",
+			"ver": "1.50",
+			"name": "BonziWORLD Enhanced 2",
+			"identifier": "bwe2",
 			"isReplit": false,
 			"mode": "default"
 		},
@@ -203,7 +205,7 @@
 				"channel": "bonziuniverse-enhanced",
 				"info": {
 					"ver": "v1.04_2024-01-09T18:03:22+00:00",
-					"date": "2024-01-09",
+					"date": "2024-02-26",
 					"isDebug": false,
 					"isBot": false
 				},
@@ -215,7 +217,7 @@
 			"enabled": false,
 			"show_embeds": false,
 			"icons": {
-				"default": "https://raw.githubusercontent.com/CosmicStar98/BonziWORLD-Enhanced/main/BWE%20Icon.png"
+				"default": "https://raw.githubusercontent.com/ItzUltraChace/BonziWORLD-Enhanced-II/main/BWE%20Icon.png"
 			},
 			"urls" : {
 				"chat": "",
