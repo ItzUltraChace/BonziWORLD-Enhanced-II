@@ -80,7 +80,7 @@ server.listen(port, function() {
 });
 app.use(express.static(`${__dirname}/public`));
 
-// Load the BonziWORLD libs
+// Load the BonziWORLD Enhanced 2 libs
 const Utils = require("./svnet/utils.js");
 const Main = require("./svnet/main.js");
 Main.exec();
